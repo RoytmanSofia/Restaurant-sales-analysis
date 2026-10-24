@@ -1,0 +1,6 @@
+category,item_rows,orders_with_category,known_revenue
+Italian,45,10,753.00
+Asian,31,10,441.65
+Mexican,34,10,401.35
+American,25,9,264.95
+Unknown,1,1,NULL
