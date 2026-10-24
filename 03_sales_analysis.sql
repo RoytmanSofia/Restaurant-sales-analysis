@@ -161,3 +161,20 @@ LEFT JOIN restaurant_analysis.menu_items AS mi
     ON od.item_id = mi.menu_item_id
 GROUP BY COALESCE(mi.category, 'Unknown')
 ORDER BY known_revenue DESC;
+
+-- Top 10 menu items by quantity sold
+SELECT
+    mi.menu_item_id,
+    mi.item_name,
+    mi.category,
+    COUNT(*) AS items_sold,
+    ROUND(SUM(mi.price), 2) AS known_revenue
+FROM restaurant_analysis.order_details AS od
+INNER JOIN restaurant_analysis.menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+GROUP BY
+    mi.menu_item_id,
+    mi.item_name,
+    mi.category
+ORDER BY items_sold DESC, mi.menu_item_id
+LIMIT 10;
